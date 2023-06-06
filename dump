@@ -1,0 +1,39 @@
+class Spike(pygame.sprite.Sprite):
+    def __init__(self, pos, size, image, type, surface):
+        super().__init__()
+        self.image = pygame.Surface((size, size))
+        self.image = pygame.image.load("graphics/seaweed_sprite.png")
+        self.rect = self.image.get_rect(topleft=pos)
+
+        self.type = type
+        self.surface = surface
+
+
+class Shooting(pygame.sprite.Sprite):
+    def __init__(self, pos, size, image, type, surface):
+        super().__init__()
+        self.image = pygame.Surface((size, size))
+        self.image = pygame.image.load("graphics/seashell_sprite.png")
+        self.rect = self.image.get_rect(topleft=pos)
+        self.type = type
+        self.surface = surface
+
+    # shooting
+        self.bullets = pygame.sprite.Group()
+        self.firing = False
+
+
+
+
+        if self.type == 2:
+            self.fire()
+            self.firing = True
+            if r_num == 1:
+                r_num = r_num - 1
+                self.fire()
+                r_num = random.randint(1,100)
+        else:
+            self.firing = False
+
+        self.bullets.update()
+        self.bullets.draw(self.surface)
